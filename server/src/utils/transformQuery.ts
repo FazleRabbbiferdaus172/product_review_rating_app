@@ -1,7 +1,5 @@
 import { searchItem } from "./orm";
 
-type KeyUpdate = {key: string, newKey: string}
-
 export function transformQuery(query: {}, nameUpdate: Record<string, string>): searchItem[] {
     let search : searchItem[] = [];
     Object.entries(query).forEach(([k, v]) => 
