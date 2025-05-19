@@ -9,6 +9,7 @@ type GetParams = {
     sortBy?: sortByItem[] | false
 }
 
+// Todo: replace Record<string, string>, object[] with better types
 export class ORM {
 
     static sortAsce(records: object[], key: string) {
@@ -71,17 +72,18 @@ export class ORM {
         return true
     }
 
-    static delete(record: Record<string, any>, model: object[]): boolean {
+    static delete(updateKey: Record<string, string>, model: object[]): boolean {
+        const record = ORM.get({model: model, limit:1 ,search: [{key: updateKey.key, query: updateKey.value}]})[0]
         const index = model.indexOf(record)
         if (index !== -1) {
-            model.slice(index, 1)
+            model.splice(index, 1)
             return true
         }
         return false
     }
 
-    static update(record: Record<string, any>, newRecord: Record<string, any>, model: object[]): boolean {
-        ORM.delete(record, model)
+    static update(updateKey: Record<string, string>, newRecord: Record<string, any>, model: object[]): boolean {
+        ORM.delete(updateKey, model)
         ORM.create(newRecord, model)
         return true
     }
