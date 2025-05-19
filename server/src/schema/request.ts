@@ -1,6 +1,6 @@
 import Data from "./data"
 
-class RequestSchema {
+class ResponseSchema {
     public count: number
     public result: Data
 
@@ -10,4 +10,4 @@ class RequestSchema {
     }
 }
 
-export default RequestSchema
+export default ResponseSchema
