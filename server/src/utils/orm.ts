@@ -1,5 +1,5 @@
-type searchItem = {key: string, query: string}
-type sortByItem = {key: string, order: "asce"| "desc" |false}
+export type searchItem = {key: string, query: string}
+export type sortByItem = {key: string, order: "asce"| "desc" |false}
 
 type GetParams = {
     model: object[],
@@ -9,7 +9,7 @@ type GetParams = {
     sortBy?: sortByItem[] | false
 }
 
-class ORM {
+export class ORM {
 
     static sortAsce(records: object[], key: string) {
         records.sort((r1: Record<string, any>, r2: Record<string, any>) => {
@@ -94,5 +94,3 @@ class ORM {
 //         sortBy: [{key: "a", order: "asce"}]
 //         }
 //     ))
-
-export default ORM
