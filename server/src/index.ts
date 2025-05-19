@@ -1,10 +1,11 @@
 import express, { Request, Response } from 'express';
-import router from './route';
+import productRouter from './productRoute';
 
 const app = express();
 const port: number = 3000;
 
-app.use('/products', router)
+app.use(express.json());
+app.use('/products', productRouter)
 
 app.listen(port, () => {
   console.log(`Server listening on port http://localhost:${port}`);
