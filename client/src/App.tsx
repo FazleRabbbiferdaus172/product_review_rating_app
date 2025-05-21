@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import 'bulma/css/bulma.css'
+import { AppDataProvider } from './component/AppContext'
+import {Child} from './component/Child'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-     hello world 
+    <AppDataProvider>
+        hello world 
+        <Child/>
+    </AppDataProvider>
+
     </>
   )
 }
