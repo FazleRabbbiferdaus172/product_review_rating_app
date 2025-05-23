@@ -9,6 +9,7 @@ for (let i=1; i <= 100; i ++) {
     product.push({id: `${i}`, name: "a", category: "a", dateAdded: `02/12/199${i}`})
 }
 
+product.push({id: "100", name: "b", category: "b", dateAdded: "02/12/2000"})
 
 export const review: Review[] = []
 
@@ -23,3 +24,13 @@ for (let i=1; i <= 100; i++) {
         }
     )
 }
+
+review.push(
+    {
+        id: "101",
+        author: "a",
+        comment: "b",
+        productId: "99",
+        rating: 5
+    }
+)

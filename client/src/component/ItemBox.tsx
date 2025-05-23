@@ -1,7 +1,14 @@
 import { RatingBox } from "./RatingComponent"
+import { AppContext } from "./AppContext"
+import { useContext, useState } from "react"
+import AutoSlider from "./AutoSlider"
+import { RelatedListBox } from "./RelatedListBox"
 
 export function ItemBox({data}) {
-    return (<div className="card">
+    let slides = data.reviews?.result.data ?? [{commnet: "No reviews Yet", id: -1, author: "", rating: 0}]
+    let [viewState, setViewState] = useState(false)
+    let [crateState, setCrateState] = useState(false)
+    return (<div className="card"><div className="card">
         <header className="card-header">
           <div className="card-header-title">
             <span>
@@ -25,17 +32,10 @@ export function ItemBox({data}) {
                         data.category}
                     </span>
                 </div>
-                <div className="is-pulled-left">
-                    <span className="subtitle is-6 pr-1">
-                        Price:
-                    </span>
-                    <span>
-                        {data.price ?? 0}
-                    </span>
-                </div>
             </div>
             <div className="content">
                     {data.name}
+                    <AutoSlider slides={slides}/> 
             </div>
             <div className="content is-pulled-right">
                 <span >
@@ -46,10 +46,17 @@ export function ItemBox({data}) {
         </div>
         <footer className="card-footer">
             <div className="card-footer-item">
-                <RatingBox/>
+                <RatingBox intialRating={data.avgRating}/>
             </div>
-          <a href="#" className="card-footer-item">Edit</a>
-          <a href="#" className="card-footer-item">Delete</a>
+          <button className="card-footer-item"></button>
+          <button onClick={() => setViewState(!viewState)} className="card-footer-item">{viewState ? "Hide reviews" : "View Reviews"}</button>
+
         </footer>
+        
+      </div>
+      <div className="card">
+        {viewState ? <RelatedListBox dataList={data.reviews} productId={data.id}/> : <></>}
+      </div>
+      
       </div>)
 }

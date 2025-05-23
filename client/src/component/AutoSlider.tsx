@@ -28,7 +28,7 @@ const AutoSlider = ({
 
       {/* Indicators */}
       <div >
-        <h4>{slides[currentIndex].comment}</h4> 
+        <h4>{slides[currentIndex]?.comment ?? ""}</h4> 
         {/* {slides.map((slide, index) => (
           <button
             key={slide.id}

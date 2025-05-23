@@ -1,8 +1,11 @@
+import fs from 'fs';
+import path from 'path';
+
 export type searchItem = {key: string, query: string}
 export type sortByItem = {key: string, order: "asce"| "desc" |false}
 
 type GetParams = {
-    model: object[],
+    model: any,
     offset?: number,
     limit?: number,
     search?: searchItem[] | false,
