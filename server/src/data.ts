@@ -6,7 +6,7 @@ export const product:Product[] = [
 
 for (let i=1; i <= 100; i ++) {
 
-    product.push({id: `${i}`, name: "a", category: "a", dateAdded: `02/12/199${i}`})
+    product.push({id: `${i}`, name: "abc", category: "abc", dateAdded: `02/12/199${i}`})
 }
 
 product.push({id: "100", name: "b", category: "b", dateAdded: "02/12/2000"})
